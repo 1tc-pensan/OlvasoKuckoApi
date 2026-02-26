@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Book;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Loan>
@@ -17,7 +18,10 @@ class LoanFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'book_id' => Book::InRandomOrder()->first()->id,
+            'borrower_name' => $this->faker->name(),
+            'borrowed_at' => $this->faker->date(),
+            'returned_at' => null,
         ];
     }
 }
